@@ -2,6 +2,9 @@
 
 import pygame
 from app import settings
+from app.sprite_loader import load_single
+
+_BULLET_SIZE = (8, 18)
 
 
 class Bullet(pygame.sprite.Sprite):
@@ -9,8 +12,8 @@ class Bullet(pygame.sprite.Sprite):
 
     def __init__(self, x: int, y: int) -> None:
         super().__init__()
-        self.image = pygame.Surface((4, 10))
-        self.image.fill(settings.YELLOW)
+        # bolt1.png is 48×32 landscape; rotate 90° to make it portrait (vertical bolt)
+        self.image = load_single("bullet/bolt1.png", size=_BULLET_SIZE, rotate=90)
         self.rect = self.image.get_rect(center=(x, y))
 
     def update(self) -> None:

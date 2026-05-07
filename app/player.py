@@ -3,6 +3,7 @@
 import pygame
 from app import settings
 from app.bullet import Bullet
+from app.sprite_loader import load_composite
 
 
 class Player(pygame.sprite.Sprite):
@@ -10,8 +11,7 @@ class Player(pygame.sprite.Sprite):
 
     def __init__(self) -> None:
         super().__init__()
-        self.image = pygame.Surface((settings.CELL_SIZE, settings.CELL_SIZE))
-        self.image.fill(settings.GREEN)
+        self.image = load_composite("player")
         start_x = (settings.COLS // 2) * settings.CELL_SIZE
         start_y = (settings.ROWS - 2) * settings.CELL_SIZE
         self.rect = self.image.get_rect(topleft=(start_x, start_y))

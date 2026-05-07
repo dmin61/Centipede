@@ -35,9 +35,51 @@ BULLET_SPEED = 10         # pixels per frame upward
 # ---------------------------------------------------------------------------
 # Centipede
 # ---------------------------------------------------------------------------
-CENTIPEDE_LENGTH = 12     # number of segments
-CENTIPEDE_SPEED = 2       # pixels per frame horizontal
-CENTIPEDE_DROP = CELL_SIZE  # pixels to drop when hitting a wall
+CENTIPEDE_LENGTH = 12
+CENTIPEDE_BASE_STEPS = 8        # grid steps per second at level 1
+CENTIPEDE_STEPS_INCREMENT = 1   # extra steps/sec gained each level (gentler curve)
+CENTIPEDE_MAX_STEPS = 24        # cap — one step every 2.5 frames at 60fps
+CENTIPEDE_START_ROW_INCREMENT = 2   # rows further down the centipede starts each level
+CENTIPEDE_MAX_START_ROW = 10        # never starts below this row
+
+# ---------------------------------------------------------------------------
+# Level progression
+# ---------------------------------------------------------------------------
+MAX_LEVEL = 10
+LEVEL_CLEAR_FRAMES = 90  # 1.5 seconds at 60 fps before next wave spawns
+
+# ---------------------------------------------------------------------------
+# Player lives
+# ---------------------------------------------------------------------------
+PLAYER_LIVES = 3
+DEATH_FLASH_FRAMES = 60   # 1 second at 60 fps before respawn
+
+# ---------------------------------------------------------------------------
+# Flea
+# ---------------------------------------------------------------------------
+FLEA_STEPS = 12                # grid steps per second downward
+FLEA_HP = 2                    # hits to kill
+FLEA_SCORE = 200
+FLEA_DROP_CHANCE = 0.30        # probability of dropping a mushroom each step
+FLEA_MIN_ZONE_MUSHROOMS = 5   # spawn flea when player zone has fewer than this
+
+# ---------------------------------------------------------------------------
+# Spider
+# ---------------------------------------------------------------------------
+SPIDER_STEPS = 8               # grid steps per second (diagonal)
+SPIDER_SPAWN_INTERVAL = 480    # frames between spawn attempts (~8 sec)
+SPIDER_SCORE_FAR = 300
+SPIDER_SCORE_MID = 600
+SPIDER_SCORE_CLOSE = 900
+SPIDER_CLOSE_PX = 100          # pixel distance thresholds for score tiers
+SPIDER_MID_PX = 200
+
+# ---------------------------------------------------------------------------
+# Scorpion
+# ---------------------------------------------------------------------------
+SCORPION_STEPS = 6             # grid steps per second
+SCORPION_SPAWN_INTERVAL = 720  # frames between spawn attempts (~12 sec)
+SCORPION_SCORE = 1000
 
 # ---------------------------------------------------------------------------
 # Mushroom field
