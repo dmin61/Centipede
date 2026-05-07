@@ -27,7 +27,10 @@ assets/
       hit/            — hit1–3.png
       death/          — enemy-death1–8.png
     background/       — stage-back.png + sprites.png (top-down space)
-  sounds/             — WAV/OGG sound files (gitignored until added)
+  sounds/             — WAV files (gitignored); see Sound source below
+                        shoot.wav, hit_mushroom.wav, kill_segment.wav,
+                        kill_enemy.wav, death.wav, game_over.wav,
+                        level_clear.wav, win.wav
 tests/          — pytest unit tests for individual entities
 ```
 
@@ -49,7 +52,7 @@ pytest
 
 ## Current state
 - Core game loop working: player movement, shooting, centipede movement, mushroom field
-- Placeholder colored rectangles for all sprites (art assets added, not yet wired to game code)
+- Placeholder colored rectangles for all sprites (art and sound assets added, not yet wired to game code)
 - Game over / win detection implemented
 - Score tracking implemented
 
@@ -57,6 +60,19 @@ pytest
 
 All sprites are from the Ansimuz Legacy Collection (free tier), Warped sci-fi series.
 Source path (local, not in repo): `C:\Users\Douglas Min\OneDrive\Legacy Video Asset Collection\Legacy Collection\Assets\`
+
+## Sound source
+
+Sounds are not yet added. Recommended free sources (all CC0, no attribution required):
+
+| Tool / Site | Best for | Format |
+| --- | --- | --- |
+| jsfxr.me | Generate laser, explosion, hit sounds in browser | WAV export |
+| kenney.nl/assets | Pre-made Sci-Fi Sounds and Interface Sounds packs | WAV/OGG |
+| freesound.org | Broader search; filter by CC0 license | WAV/OGG |
+| opengameart.org | Game-specific packs including retro arcade sets | WAV/OGG |
+
+All 8 sounds added to `assets/sounds/` (gitignored, not tracked in repo).
 
 ## Project-specific conventions
 - All movement uses pixel coordinates internally; the grid (CELL_SIZE) is used
