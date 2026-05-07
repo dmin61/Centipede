@@ -4,5 +4,4 @@ __pycache__/
 .pytest_cache/
 .vscode/
 .env
-assets/sprites/
 assets/sounds/

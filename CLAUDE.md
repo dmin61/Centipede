@@ -15,8 +15,19 @@ app/
   centipede.py  — Centipede + Segment classes
   mushroom.py   — Mushroom obstacle sprite
 assets/
-  sprites/      — drop pixel art PNG files here (gitignored until added)
-  sounds/       — drop WAV/OGG sound files here (gitignored until added)
+  sprites/
+    player/           — ship 01 (5 layer PNGs, Warped series)
+    centipede/
+      segment-01/     — enemy-01 frames (5 PNGs)
+      segment-02/     — enemy-02 frames (4 PNGs)
+      segment-03/     — enemy-03 frames (4 PNGs)
+    mushroom/         — sunny-mushroom spritesheets + walk frames
+    bullet/           — bolt1–4.png (4-frame animated bolt)
+    effects/
+      hit/            — hit1–3.png
+      death/          — enemy-death1–8.png
+    background/       — stage-back.png + sprites.png (top-down space)
+  sounds/             — WAV/OGG sound files (gitignored until added)
 tests/          — pytest unit tests for individual entities
 ```
 
@@ -38,9 +49,14 @@ pytest
 
 ## Current state
 - Core game loop working: player movement, shooting, centipede movement, mushroom field
-- Placeholder colored rectangles for all sprites (no art loaded yet)
+- Placeholder colored rectangles for all sprites (art assets added, not yet wired to game code)
 - Game over / win detection implemented
 - Score tracking implemented
+
+## Asset source
+
+All sprites are from the Ansimuz Legacy Collection (free tier), Warped sci-fi series.
+Source path (local, not in repo): `C:\Users\Douglas Min\OneDrive\Legacy Video Asset Collection\Legacy Collection\Assets\`
 
 ## Project-specific conventions
 - All movement uses pixel coordinates internally; the grid (CELL_SIZE) is used
