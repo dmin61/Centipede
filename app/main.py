@@ -1,11 +1,12 @@
 """Entry point."""
 
+import asyncio
+
 from app.game import Game
 
 
-def main() -> None:
-    Game().run()
+async def main() -> None:
+    await Game().run()
 
 
-if __name__ == "__main__":
-    main()
+asyncio.run(main())

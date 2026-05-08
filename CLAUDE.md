@@ -6,14 +6,22 @@ at a descending centipede while navigating a mushroom field.
 
 ## Project structure
 ```
+main.py         — pygbag entry point (async wrapper for browser build)
 app/
   settings.py   — all game constants (speed, sizes, colors, grid)
-  main.py       — entry point, calls Game().run()
+  main.py       — desktop entry point, calls Game().run()
   game.py       — main game loop, sprite groups, collision logic
   player.py     — player shooter sprite
   bullet.py     — bullet sprite
   centipede.py  — Centipede + Segment classes
   mushroom.py   — Mushroom obstacle sprite
+  flea.py       — Flea enemy (drops mushrooms, appears when zone too clear)
+  spider.py     — Spider enemy (zigzags, eats mushrooms, proximity scoring)
+  scorpion.py   — Scorpion enemy (poisons mushrooms, triggers centipede dive)
+  screens.py    — title, pause, game-over, win overlays
+  sound.py      — sound manager (mute toggle, graceful missing-file handling)
+  sprite_loader.py — asset loader (pixel art sprites wired to all entities)
+  high_score.py — persistent high score (local file)
 assets/
   sprites/
     player/           — ship 01 (5 layer PNGs, Warped series)
@@ -31,6 +39,8 @@ assets/
                         shoot.wav, hit_mushroom.wav, kill_segment.wav,
                         kill_enemy.wav, death.wav, game_over.wav,
                         level_clear.wav, win.wav
+build/
+  web/          — pygbag browser build output (index.html, centipede.apk)
 tests/          — pytest unit tests for individual entities
 ```
 
@@ -49,12 +59,21 @@ pytest
 ## Key dependencies
 - `pygame-ce 2.5.7` — pygame Community Edition; has pre-built wheels for Python 3.14
   (standard `pygame` 2.6 does not support Python 3.14 yet)
+- `pygbag` — packages the game as a WebAssembly browser build for itch.io
+
+## How to build for browser
+```powershell
+.venv\Scripts\activate
+pygbag .
+```
+Serves locally at http://localhost:8000. Output goes to `build/web/`.
+To publish: zip `build/web/*` and upload to itch.io as an HTML game (600×800).
 
 ## Current state
-- Core game loop working: player movement, shooting, centipede movement, mushroom field
-- Placeholder colored rectangles for all sprites (art and sound assets added, not yet wired to game code)
-- Game over / win detection implemented
-- Score tracking implemented
+- Complete game: all 10 levels, 3 enemy types (flea, spider, scorpion), score, lives, high score
+- Pixel art sprites wired to all entities (Ansimuz Legacy Collection)
+- Sound manager wired; 8 WAV files in assets/sounds/ (gitignored)
+- Published to itch.io as a browser game (desktop only, keyboard required)
 
 ## Asset source
 
@@ -63,16 +82,8 @@ Source path (local, not in repo): `C:\Users\Douglas Min\OneDrive\Legacy Video As
 
 ## Sound source
 
-Sounds are not yet added. Recommended free sources (all CC0, no attribution required):
-
-| Tool / Site | Best for | Format |
-| --- | --- | --- |
-| jsfxr.me | Generate laser, explosion, hit sounds in browser | WAV export |
-| kenney.nl/assets | Pre-made Sci-Fi Sounds and Interface Sounds packs | WAV/OGG |
-| freesound.org | Broader search; filter by CC0 license | WAV/OGG |
-| opengameart.org | Game-specific packs including retro arcade sets | WAV/OGG |
-
 All 8 sounds added to `assets/sounds/` (gitignored, not tracked in repo).
+Free CC0 sources used: jsfxr.me, kenney.nl/assets, freesound.org, opengameart.org.
 
 ## Project-specific conventions
 - All movement uses pixel coordinates internally; the grid (CELL_SIZE) is used

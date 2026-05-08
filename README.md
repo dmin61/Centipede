@@ -5,6 +5,11 @@ Atari Centipede cabinet: a 12-segment centipede descends through a mushroom fiel
 while three enemy types (flea, spider, scorpion) harass the player from different
 angles.
 
+## Play in browser
+
+Available on itch.io — no install required. Desktop browsers only (Windows and Mac).
+**Not playable on mobile** (keyboard controls required).
+
 ## Gameplay
 
 - **Shoot** the centipede one segment at a time. Each hit leaves a mushroom behind.
@@ -19,10 +24,11 @@ angles.
 
 | Key | Action |
 |-----|--------|
-| Arrow keys | Move player |
-| Space | Fire |
-| P | Pause / resume |
-| Q | Quit to title |
+| Arrow keys | Move |
+| Space | Fire / Start |
+| P | Pause / Resume |
+| R | Restart |
+| M | Mute / Unmute |
 
 ## Requirements
 
@@ -56,8 +62,9 @@ pytest
 ## Project structure
 
 ```
+main.py          — pygbag entry point (browser build)
 app/
-  main.py        — entry point
+  main.py        — desktop entry point
   game.py        — game loop, state machine, collision logic
   settings.py    — all numeric constants (single source of truth)
   player.py      — player sprite
@@ -74,6 +81,8 @@ app/
 assets/
   sprites/       — pixel art (Ansimuz Legacy Collection, Warped sci-fi series)
   sounds/        — WAV files (gitignored; supply your own — see below)
+build/
+  web/           — pygbag browser build output (index.html, centipede.apk)
 tests/           — pytest unit tests
 ```
 

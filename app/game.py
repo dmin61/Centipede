@@ -1,5 +1,6 @@
 """Main game loop and state management."""
 
+import asyncio
 import random
 from enum import Enum, auto
 
@@ -142,13 +143,14 @@ class Game:
     # Public entry point
     # ------------------------------------------------------------------
 
-    def run(self) -> None:
+    async def run(self) -> None:
         """Start and maintain the game loop until the window is closed."""
         while True:
             self._handle_events()
             self._update()
             self._draw()
             self.clock.tick(settings.FPS)
+            await asyncio.sleep(0)
 
     # ------------------------------------------------------------------
     # Event handling
