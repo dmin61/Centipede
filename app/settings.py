@@ -36,10 +36,10 @@ BULLET_SPEED = 10         # pixels per frame upward
 # Centipede
 # ---------------------------------------------------------------------------
 CENTIPEDE_LENGTH = 12
-CENTIPEDE_BASE_STEPS = 8        # grid steps per second at level 1
+CENTIPEDE_BASE_STEPS = 4        # grid steps per second at level 1
 CENTIPEDE_STEPS_INCREMENT = 1   # extra steps/sec gained each level (gentler curve)
 CENTIPEDE_MAX_STEPS = 24        # cap — one step every 2.5 frames at 60fps
-CENTIPEDE_START_ROW_INCREMENT = 2   # rows further down the centipede starts each level
+CENTIPEDE_START_ROW_INCREMENT = 1   # rows further down the centipede starts each level
 CENTIPEDE_MAX_START_ROW = 10        # never starts below this row
 
 # ---------------------------------------------------------------------------
